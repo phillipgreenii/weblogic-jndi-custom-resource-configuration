@@ -1,7 +1,6 @@
 package com.idmworks.weblogic.jndiconfiguration;
 
 import com.idmworks.weblogic.jndiconfiguration.PropertiesInitializer.PropertiesDescriptor;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Properties;
 import javax.naming.*;
@@ -41,13 +40,6 @@ public class PropertiesInitializerSpec {
   }
 
   @Test
-  public void createInitialContextShouldCreateNonnullInitialContext() {
-    final Hashtable<String, String> ht = new Hashtable<String, String>();
-    InitialContext result = PropertiesInitializer.createInitialContext(ht);
-    assertThat(result, is(notNullValue()));
-  }
-
-  @Test
   public void parseShouldParseValidInputs() {
     final String[] args = {"properties/test=" + testPropertiesPath, "properties/mock=" + mockPropertiesPath};
     final NameParser nameParser = new NameParser() {
@@ -62,21 +54,5 @@ public class PropertiesInitializerSpec {
 
     assertThat(result.get(0).getJndiName().toString(), is("properties/test"));
     assertThat(result.get(1).getJndiName().toString(), is("properties/mock"));
-  }
-
-  @Test
-  public void loadPropertiesShouldLoadPropertesWhenExists() {
-    final String filename = testPropertiesPath;
-
-    final Properties result = PropertiesInitializer.loadProperties(filename);
-
-    assertThat(result.size(), is(6));
-
-    assertThat(result.getProperty("testfield1"), is("1"));
-    assertThat(result.getProperty("testfield2"), is("1"));
-    assertThat(result.getProperty("testfield3"), is("2"));
-    assertThat(result.getProperty("testfield4"), is("3"));
-    assertThat(result.getProperty("testfield5"), is("5"));
-    assertThat(result.getProperty("testfield6"), is("8"));
   }
 }
