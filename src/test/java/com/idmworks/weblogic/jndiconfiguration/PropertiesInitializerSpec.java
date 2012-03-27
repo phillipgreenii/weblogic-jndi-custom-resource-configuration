@@ -1,6 +1,5 @@
 package com.idmworks.weblogic.jndiconfiguration;
 
-import com.idmworks.weblogic.jndiconfiguration.PropertiesInitializer.PropertiesDescriptor;
 import java.util.List;
 import java.util.Properties;
 import javax.naming.*;
