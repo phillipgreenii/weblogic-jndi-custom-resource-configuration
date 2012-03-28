@@ -29,7 +29,7 @@ public class LdapDirContextInitializerSpec {
     final Name propertiesName = new CompositeName("properties/nothing" + LdapDirContextInitializer.PROPERTIES_NAME_SUFFIX);//CompositeName is used for testing
     final Properties properties = new Properties();
 
-    final PropertiesDescriptor propertiesDescriptor = new PropertiesDescriptor(jndiName, properties);
+    final ValueDescriptor<Properties> propertiesDescriptor = ValueDescriptor.of(jndiName, properties);
 
     final LdapDirContextInitializer instance = new LdapDirContextInitializer(initialContext);
     instance.initialize(propertiesDescriptor);
@@ -47,7 +47,7 @@ public class LdapDirContextInitializerSpec {
         return new CompositeName(string);//CompositeName is used for testing
       }
     };
-    final List<PropertiesDescriptor> result = LdapDirContextInitializer.parse(nameParser, args);
+    final List<ValueDescriptor<Properties>> result = LdapDirContextInitializer.parse(nameParser, args);
 
     assertThat(result.size(), is(1));
 

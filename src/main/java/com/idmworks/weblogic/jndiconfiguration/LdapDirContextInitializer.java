@@ -30,7 +30,7 @@ public class LdapDirContextInitializer {
    *
    * @param propertiesDescriptor properties and JNDI name to use
    */
-  public void initialize(PropertiesDescriptor propertiesDescriptor) {
+  public void initialize(ValueDescriptor<Properties> propertiesDescriptor) {
     LOGGER.log(Level.FINE, "initializing {0}", propertiesDescriptor);
     try {
       JndiUtils.ensureSubcontexts(initialContext, propertiesDescriptor.getJndiName());
@@ -80,7 +80,7 @@ public class LdapDirContextInitializer {
 
     final LdapDirContextInitializer ldapConnectionInitializer = new LdapDirContextInitializer(initialContext);
 
-    for (final PropertiesDescriptor propertiesDescriptor : parse(nameParser, args)) {
+    for (final ValueDescriptor<Properties> propertiesDescriptor : parse(nameParser, args)) {
       ldapConnectionInitializer.initialize(propertiesDescriptor);
     }
   }
@@ -93,13 +93,13 @@ public class LdapDirContextInitializer {
    * @return PropertyDescriptors based on parsed args
    * @throws IllegalArgumentException thrown when args can't be parsed
    */
-  static List<PropertiesDescriptor> parse(final NameParser nameParser, final String[] args) throws IllegalArgumentException {
-    final List<PropertiesDescriptor> propertiesDescriptors = new ArrayList<PropertiesDescriptor>(args.length);
+  static List<ValueDescriptor<Properties>> parse(final NameParser nameParser, final String[] args) throws IllegalArgumentException {
+    final List<ValueDescriptor<Properties>> propertiesDescriptors = new ArrayList<ValueDescriptor<Properties>>(args.length);
     for (String arg : args) {
       final String[] parts = arg.split("=", 2);
       final Name jndiName = JndiUtils.parseJndiName(nameParser, parts[0]);
       final Properties properties = PropertiesUtils.loadProperties(parts[1]);
-      propertiesDescriptors.add(new PropertiesDescriptor(jndiName, properties));
+      propertiesDescriptors.add(ValueDescriptor.of(jndiName, properties));
     }
     return propertiesDescriptors;
   }

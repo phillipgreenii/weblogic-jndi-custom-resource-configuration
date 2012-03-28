@@ -30,7 +30,7 @@ public class PropertiesInitializerSpec {
     final Name jndiName = new CompositeName("properties/nothing");//CompositeName is used for testing
     final Properties properties = new Properties();
 
-    final PropertiesDescriptor propertiesDescriptor = new PropertiesDescriptor(jndiName, properties);
+    final ValueDescriptor<Properties> propertiesDescriptor = ValueDescriptor.of(jndiName, properties);
 
     final PropertiesInitializer instance = new PropertiesInitializer(initialContext);
     instance.initialize(propertiesDescriptor);
@@ -47,7 +47,7 @@ public class PropertiesInitializerSpec {
         return new CompositeName(string);//CompositeName is used for testing
       }
     };
-    final List<PropertiesDescriptor> result = PropertiesInitializer.parse(nameParser, args);
+    final List<ValueDescriptor<Properties>> result = PropertiesInitializer.parse(nameParser, args);
 
     assertThat(result.size(), is(2));
 
