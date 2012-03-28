@@ -13,6 +13,10 @@
     Unlike most other application servers, 
     Weblogic doesn't provide a way to add custom resources to JNDI.
     This project provides partial solutions for doing that.
+    
+    Reference:
+    My partial solutions are based on code found at
+    http://code.google.com/p/weblogic-jndi-startup/
   </description>
   
   <properties>
