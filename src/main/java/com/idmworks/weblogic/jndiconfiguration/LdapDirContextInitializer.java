@@ -42,7 +42,7 @@ public class LdapDirContextInitializer {
       initialContext.bind(ldapConnectionFactoryName, reference);
       LOGGER.log(Level.INFO, "Bound LDAP Connection Factory to {0} as {1}", new Object[]{ldapConnectionFactoryName, reference});
 
-      initialContext.bind(propertiesName, propertiesDescriptor.getProperties());
+      initialContext.bind(propertiesName, propertiesDescriptor.getValue());
       LOGGER.log(Level.INFO, "Bound LDAP Connection Factory Properties of {0} to {1}", new Object[]{ldapConnectionFactoryName, propertiesName});
     } catch (NamingException e) {
       throw new IllegalArgumentException("Unable to bind " + propertiesDescriptor, e);

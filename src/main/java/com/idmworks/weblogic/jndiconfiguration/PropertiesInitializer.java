@@ -26,7 +26,7 @@ public class PropertiesInitializer {
     LOGGER.log(Level.FINE, "initializing {0}", propertiesDescriptor);
     try {
       JndiUtils.ensureSubcontexts(initialContext, propertiesDescriptor.getJndiName());
-      initialContext.bind(propertiesDescriptor.getJndiName(), propertiesDescriptor.getProperties());
+      initialContext.bind(propertiesDescriptor.getJndiName(), propertiesDescriptor.getValue());
       LOGGER.log(Level.INFO, "Initialized {0}", propertiesDescriptor);
     } catch (NamingException e) {
       throw new IllegalArgumentException("Unable to bind " + propertiesDescriptor, e);

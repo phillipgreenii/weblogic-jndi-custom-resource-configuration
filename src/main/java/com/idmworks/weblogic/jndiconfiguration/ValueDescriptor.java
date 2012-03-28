@@ -35,7 +35,7 @@ public class ValueDescriptor<T> {
    *
    * @return value
    */
-  public T getProperties() {
+  public T getValue() {
     return value;
   }
 
