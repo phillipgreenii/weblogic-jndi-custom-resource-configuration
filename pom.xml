@@ -3,12 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>edu.wvu.esd.weblogic</groupId>
-  <artifactId>jndi-configuration</artifactId>
+  <groupId>com.idmworks.weblogic</groupId>
+  <artifactId>weblogic-jndi-custom-resource-configuration</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>jndi-configuration</name>
+  <name>Weblogic JNDI Custom Resource Configuration</name>
+  <description>
+    Unlike most other application servers, 
+    Weblogic doesn't provide a way to add custom resources to JNDI.
+    This project provides partial solutions for doing that.
+  </description>
   
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
