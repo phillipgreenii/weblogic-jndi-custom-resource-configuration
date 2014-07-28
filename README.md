@@ -103,6 +103,8 @@ The above argument would Load the properties found at `/etc/myApp/config/myldap-
 # References
   * [stackoverflow-question]
   * [weblogic-jndi-startup]
+  * [original-repo]
 
 [stackoverflow-question]: http://stackoverflow.com/questions/3749799/custom-resource-in-jndi-on-different-application-servers "Custom resource in JNDI on different application servers on stackoverflow"
 [weblogic-jndi-startup]: http://code.google.com/p/weblogic-jndi-startup/ "weblogic-jndi-startup on Google Code"
+[original-repo]: https://bitbucket.org/phillip_green_idmworks/weblogic-jndi-custom-resource-configuration "Original Repo from bitbucket"
